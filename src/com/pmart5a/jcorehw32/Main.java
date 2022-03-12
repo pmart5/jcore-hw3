@@ -25,6 +25,7 @@ public class Main {
                     oos.writeObject(GameProgress.listGameProgress.get(i));
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
+                    builder.append(ex.getMessage());
                 }
                 String nameFileCon = getCanonicalFileName(nameFile);
                 if (checkExistsFile(nameFileCon)) {
@@ -44,7 +45,7 @@ public class Main {
     static void zipFiles(String pathFileZip) {
         try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(pathFileZip))) {
             for (String pathFile : listNameFile) {
-                int lastSlash = pathFile.lastIndexOf("\\") + 1;
+                int lastSlash = pathFile.lastIndexOf(File.separator) + 1;
                 String nameFile = pathFile.substring(lastSlash);
                 FileInputStream fis = new FileInputStream(pathFile);
                 ZipEntry entry = new ZipEntry(nameFile);
@@ -70,6 +71,7 @@ public class Main {
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
     }
 
@@ -85,6 +87,7 @@ public class Main {
             nameCanonicalFile = String.valueOf(fileOnDisk.getCanonicalFile());
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
         return nameCanonicalFile;
     }

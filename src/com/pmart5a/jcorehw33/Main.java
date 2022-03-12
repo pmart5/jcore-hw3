@@ -48,6 +48,7 @@ public class Main {
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
     }
 
@@ -58,6 +59,7 @@ public class Main {
             gameProgress = (GameProgress) ois.readObject();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
         return gameProgress;
     }

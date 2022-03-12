@@ -13,6 +13,7 @@ public class Main {
                             ". (Возможно, каталоги уже существуют).\n");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
     }
 
@@ -23,6 +24,7 @@ public class Main {
                     "Ошибка при создании файла " + newFile.getCanonicalFile() + ". (Возможно, файл уже существует).\n");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
     }
 
@@ -32,6 +34,7 @@ public class Main {
             bw.flush();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+            builder.append(ex.getMessage());
         }
     }
 
